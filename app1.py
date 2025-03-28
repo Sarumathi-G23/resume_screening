@@ -24,6 +24,7 @@ file_path = r"C:\Users\WELCOME\Downloads\ks\resume_dataset.csv"
 resumeDataSet = pd.read_csv(file_path, encoding='utf-8')
 
 # Function to clean resume text
+# Function to clean resume text
 def clean_resume(resume_text):
     resume_text = re.sub(r'http\S+', ' ', resume_text)  # Remove URLs
     resume_text = re.sub(r'RT|cc', ' ', resume_text)  # Remove RT and cc
