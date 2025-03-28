@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'echo "Building the project..."'
+                // Add your build commands here (e.g., Maven, Gradle, npm)
+                // Example: sh 'mvn clean package' 
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'echo "Running tests..."'
+                // Add your test commands here
+                // Example: sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying the project..."'
+                // Add deployment steps (e.g., Docker, Kubernetes, SCP, etc.)
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build was successful!'
+        }
+        failure {
+            echo 'Build failed!'
+
